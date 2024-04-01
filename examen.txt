@@ -1,0 +1,55 @@
+class Zoológico {
+    - nombre: string
+    - ubicación: string
+    - recintos: lista<Recinto>
+    - animales: lista<Animal>
+    + agregarRecinto(recinto: Recinto): void
+    + agregarAnimal(animal: Animal): void
+}
+
+class Recinto {
+    - nombre: string
+    - tamaño: int
+    - especie: Especie
+    - animales: lista<Animal>
+    + agregarAnimal(animal: Animal): void
+}
+
+class Especie {
+    - nombre: string
+    - recintos: lista<Recinto>
+    - animales: lista<Animal>
+    + agregarRecinto(recinto: Recinto): void
+    + agregarAnimal(animal: Animal): void
+}
+
+class Animal {
+    - nombre: string
+    - especie: Especie
+    - recinto: Recinto
+    - cuidador: Cuidador
+    + asignarCuidador(cuidador: Cuidador): void
+}
+
+class Cuidador {
+    - nombre: string
+    - especialidad: string
+    - animalesAsignados: lista<Animal>
+    + agregarAnimal(animal: Animal): void
+}
+
+class Actividad {
+    - nombre: string
+    - horario: string
+    - animales: lista<Animal>
+    + agregarAnimal(animal: Animal): void
+}
+Zoológico "1" -- "0..*" Recinto
+Zoológico "1" -- "0..*" Animal
+Recinto "1" -- "0..*" Animal
+Recinto "1" -- "0..1" Especie
+Especie "1" -- "0..*" Animal
+Especie "1" -- "0..*" Recinto
+Animal "1" -- "0..1" Cuidador
+Cuidador "1" -- "0..*" Animal
+Actividad "1" -- "0..*" Animal
